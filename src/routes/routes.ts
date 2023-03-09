@@ -1,4 +1,5 @@
 import { lazy, LazyExoticComponent } from 'react';
+import { NoLazy } from '../lazyload/pages/NoLazy';
 type JSXComponent = ()=>JSX.Element;
 interface Route {
     to : string;
@@ -6,27 +7,23 @@ interface Route {
     Component : LazyExoticComponent<JSXComponent>|JSXComponent;
     name : string;
 }
-const Lazy1 = lazy(()=>import( '../lazyload/pages/LazyPage1'));
+
+const LazyLayout = lazy(()=>import( '../lazyload/layout/LazyLayout'));
 const Lazy2= lazy(()=>import( '../lazyload/pages/LazyPage2'));
 const Lazy3 = lazy(()=>import( '../lazyload/pages/LazyPage3'));
 
 export const routes : Route[] = [
     {
-        to : '/lazy-1',
-        path:'lazy-1',
-        Component : Lazy1,
-        name : 'Lazy 1'
+        path:'/lazyload/*',
+        to : '/lazyload',
+        Component : LazyLayout,
+        name : 'Lazy Layout'
     },
     {
-        to : '/lazy-2',
-        path:'lazy-2',
-        Component : Lazy2,
-        name : 'Lazy 2'
+        path:'no-lazy',
+        to : '/no-lazy',
+        Component : NoLazy,
+        name : 'No Lazy'
     },
-    {
-        to : '/lazy-3',
-        path:'lazy-3',
-        Component : Lazy3,
-        name : 'Lazy 3'
-    }
+    
 ]

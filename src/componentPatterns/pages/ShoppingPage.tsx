@@ -1,4 +1,6 @@
 import { ProductCard} from '../components/';
+import styles from '../styles/custom-styles.module.css'
+
 const product = {
     id : '1',
     title : 'Coffe mug',
@@ -6,7 +8,7 @@ const product = {
 }
 export const ShoppingPage = () => {
   return (
-    <div>
+    <div >
         <h1>Shopping Page</h1>
         <hr/>
         <div style={{
@@ -15,19 +17,25 @@ export const ShoppingPage = () => {
             flexWrap : 'wrap'
         }}>
             
-        <ProductCard product={product}>
-            <ProductCard.Image/>
-            <ProductCard.Title title='Hola'/>
-            <ProductCard.Buttons/>
+        <ProductCard 
+            product={product} 
+            className={`${styles.bg_dark}`}
+        >
+            <ProductCard.Image className={styles['custom-image']}/>
+            <ProductCard.Title className={`${styles.text_white}`} title='Hola'/>
+            <ProductCard.Buttons className={`${styles['custom-buttons']} ${styles.text_white}`}/>
         </ProductCard>
-        {/* <ProductCard product={product}>
-            <ProductCard.Image/>
-            <ProductCard.Title/>
-            <ProductCard.Buttons/>
-        </ProductCard> */}
-        {/* <ProductCard/>
-        <ProductCard/>
-        <ProductCard/> */}
+        <ProductCard 
+            product={product} 
+            className={`${styles.bg_dark}`}
+            style = {{
+                backgroundColor : 'blue'
+            }}
+        >
+            <ProductCard.Image className={styles['custom-image']}/>
+            <ProductCard.Title className={`${styles.text_white}`} title='Hola'/>
+            <ProductCard.Buttons className={`${styles['custom-buttons']} ${styles.text_white}`}/>
+        </ProductCard>
         </div>
     </div>
   )
